@@ -1,0 +1,92 @@
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+body{
+	font-family: 'Fira Sans', sans-serif;
+}
+header{;
+	background-color: #ccc;
+	text-align: center;
+	padding: 5px 0;
+}
+header h1{
+	font-weight: 500;
+	font-size: 3.5rem;
+}
+.marcador{
+	text-align: center;
+	padding: 4rem 0 .5rem;
+	font-size: 3.5rem;
+}
+.marcador p{
+	font-size: 1.4rem;
+}
+.tablero{
+	position: relative;
+	width: 100%;
+	height: 550px;
+}
+.contTablero{
+	position: relative;
+	width: 25%;
+	height: 100%;
+	float: left;
+}
+.linea{
+	border-right: 1px solid black ;
+}
+.jugador{
+	text-align: center;
+	padding-top: 2.5rem;
+	font-size: 1.5rem;
+}
+.jugador h2{
+	font-weight: 500;
+}
+.jugadas{
+	position: absolute;
+	width: 60px;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+}
+.jugada{
+	width: 100%;
+	margin:40px 0;
+}
+.jugada img{
+	width: 100%;
+}
+.puntero{
+	cursor: pointer;
+}
+.eleccion{
+	position: absolute;
+	width: 80px;
+	text-align: center;
+	font-size: 1.5rem;
+	bottom: 15%
+}
+.eleccion img{
+	width: 100%;
+}
+#userJugada{
+	right: 20%;
+}
+
+#compJugada{
+	left: 20%;
+}
+#result{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 3rem;
+	text-align: center;
+}
+.ocultar{
+	display: none;
+}

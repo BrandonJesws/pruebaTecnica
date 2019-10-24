@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css?family=Fira+Sans&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="./styles.css">
+	<title>Prueba Técnica</title>
+</head>
+<body>
+	<header>
+		<h1>Piedra, Papel o Tijera</h1>
+	</header>
+	<div class="marcador">
+		<span id="userPuntaje">0</span>-<span id="compPuntaje">0</span>
+		<p>marcador</p>
+	</div>
+	<div class="tablero">
+		<div class="contTablero jugador">
+			<h2>Tu</h2>
+			<p id="userLabel">Selecciona una opción</p>
+			<div class="jugadas">
+				<div id="papel" class="jugada puntero">
+					<img src="./img/paper.png" alt="papel">
+				</div>
+				<div id="piedra" class="jugada puntero">
+					<img src="./img/rock.png" alt="piedra">
+				</div>
+				<div id="tijeras" class="jugada puntero">
+					<img src="./img/scissors.png" alt="tijeras">
+				</div>
+			</div>
+		</div>
+		<div id="div_conlinea" class="contTablero linea">
+			<div id="userJugada" class="eleccion ocultar">
+				<img src="./img/paper.png" alt="papel">
+				<p><span></span></p>
+			</div>
+		</div>
+		<div class="contTablero">
+			<div id="compJugada" class="eleccion ocultar">
+				<img src="./img/paper.png" alt="papel">
+				<p><span></span></p>
+			</div>
+		</div>
+		<div class="contTablero jugador">
+			<h2>Computadora</h2>
+			<div class="jugadas">
+				<div class="jugada">
+					<img src="./img/paper.png" alt="papel">
+				</div>
+				<div class="jugada">
+					<img src="./img/rock.png" alt="piedra">
+				</div>
+				<div class="jugada">
+					<img src="./img/scissors.png" alt="tijeras">
+				</div>
+			</div>
+		</div>
+		<div id="result" class="ocultar">
+			<span>Resultado</span>
+		</div>
+	</div>
+	
+	<script type="text/javascript" src="./main.js"></script>
+</body>
+</html>
