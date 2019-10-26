@@ -1,25 +1,22 @@
-const userPuntaje_span = document.querySelector('#userPuntaje');
-const compPuntaje_span = document.querySelector('#compPuntaje');
-const labelUsuario = document.querySelector('#userLabel');
-const result_span = document.querySelector('#result span');
-const result = document.querySelector('#result');
-const userJugada_div = document.querySelector('#userJugada');
-const compJugada_div = document.querySelector('#compJugada');
-const userJugada_img = document.querySelector('#userJugada img');
-const userJugada_span = document.querySelector('#userJugada p span');
-const compJugada_img = document.querySelector('#compJugada img');
-const compJugada_span = document.querySelector('#compJugada p span');
-const linea_div = document.querySelector('#div_conlinea');
 const papel = document.querySelector('#papel');
 const piedra = document.querySelector('#piedra');
 const tijeras = document.querySelector('#tijeras');
+const userPuntaje_span = document.querySelector('#userPuntaje');
+const compPuntaje_span = document.querySelector('#compPuntaje');
+const labelUsuario = document.querySelector('#userLabel');
+const linea_div = document.querySelector('#div_conlinea');
+const result = document.querySelector('#result');
+const userJugada_div = document.querySelector('#userJugada');
+const compJugada_div = document.querySelector('#compJugada');
 
 let userPuntaje = 0;
 let compPuntaje = 0;
 
-papel.addEventListener('click', () => jugar('p'));
-piedra.addEventListener('click', () => jugar('r'));
-tijeras.addEventListener('click', () => jugar('s'));
+(()=>{
+	papel.addEventListener('click', () => jugar('p'));
+	piedra.addEventListener('click', () => jugar('r'));
+	tijeras.addEventListener('click', () => jugar('s'));
+})();
 
 function getCompJugada(){
 	const jugadas = ['r', 'p', 's'];
@@ -28,35 +25,35 @@ function getCompJugada(){
 }
 
 function mostrarJugadas(userJugada, compJugada){
-	const img_jugadaUser = getImagenJugada(userJugada);
-	const text_jugadaUser = getTextoJugada(userJugada);
-	const img_jugadaComp = getImagenJugada(compJugada);
-	const text_jugadaComp = getTextoJugada(compJugada);
+	const [userImg, userText] = getImgText(userJugada);
+	const [compImg, compText] = getImgText(compJugada);
 
-	userJugada_img.src = img_jugadaUser;
-	userJugada_span.innerHTML = text_jugadaUser;
-	compJugada_img.src = img_jugadaComp;
-	compJugada_span.innerHTML = text_jugadaComp;
-	userJugada_div.classList.remove('ocultar');
-	compJugada_div.classList.remove('ocultar');
+	userJugada_div.innerHTML =`<img src="${userImg}" alt="${userText}">
+							   <p>${userText}</p>`;
+	compJugada_div.innerHTML =`<img src="${compImg}" alt="${compText}">
+							   <p>${compText}</p>`;
 }
 
-function getImagenJugada(jugada){
-	if(jugada === 'r') return "./img/rock.png";
-	if(jugada === 'p') return "./img/paper.png";
-	if(jugada === 's') return "./img/scissors.png";
+function getImgText(jugada){
+	if(jugada === 'r') return ["./img/rock.png", "Piedra"];
+	if(jugada === 'p') return ["./img/paper.png", "Papel"];
+	if(jugada === 's') return ["./img/scissors.png", "Tijeras"];
 }
 
-function getTextoJugada(jugada){
-	if(jugada === 'r') return "Piedra";
-	if(jugada === 'p') return "Papel";
-	if(jugada === 's') return "Tijeras";
+function ocultar(elemento){
+	while (elemento.firstChild) {
+  		elemento.removeChild(elemento.firstChild);
+	}
 }
 
 function ocultarJugadas(){
-	userJugada_div.classList.add('ocultar');
-	compJugada_div.classList.add('ocultar');
+	ocultar(userJugada_div);
+	ocultar(compJugada_div);
 	linea_div.classList.remove('linea');
+}
+
+function textoResultado(textResultado){
+	result.innerHTML = `<span>${textResultado}</span>`;
 }
 
 function ganar(){
@@ -69,11 +66,6 @@ function perder(){
 	compPuntaje++;
 	compPuntaje_span.innerHTML = compPuntaje;
 	textoResultado("Perdiste");
-}
-
-function textoResultado(textResultado){
-	result_span.innerHTML = textResultado;
-	result.classList.remove('ocultar');
 }
 
 function jugar(userJugada){
@@ -103,9 +95,9 @@ function jugar(userJugada){
 			break;
 		}
 		setTimeout(()=>{
+			ocultar(result);
 			labelUsuario.classList.remove('ocultar');
 			linea_div.classList.add('linea');
-			result.classList.add('ocultar');
 		}, 900);
 	}, 900);
 }
